@@ -46,7 +46,18 @@ defmodule Identicon do
   """
   def build_grid(%Identicon.Image{hex: hex} = _) do
     hex
-    |> Enum.chunk_every(3)
+    |> Enum.chunk(3)
+    |> Enum.map(&mirror_row/1)   # passing a reference to a function
 
+  end
+
+  @doc """
+   takes in the chunked list and mirror elements of each list
+   takes in eg [145, 46, 200] and returns [145,46,200,46,145]
+  """
+  def mirror_row(row) do
+    [first,second | _tail] = row
+
+    row ++ [second,first]
   end
 end
