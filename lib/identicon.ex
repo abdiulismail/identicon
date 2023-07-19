@@ -11,8 +11,11 @@ defmodule Identicon do
     # hash = :crypto.hash(:md5, "banana")
     # :binary.bin_to_list(hash)
 
-    :crypto.hash(:md5,input)
+    hex = :crypto.hash(:md5,input)
     |> :binary.bin_to_list
+
+    %Identicon.Image{hex: hex}
+
   end
 
 end
