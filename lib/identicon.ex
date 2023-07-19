@@ -5,7 +5,7 @@ defmodule Identicon do
     input
     |> hash_input()
     |> pick_color()
-    |> buil_grid()
+    |> build_grid()
 
   end
 
@@ -36,7 +36,15 @@ defmodule Identicon do
     %Identicon.Image{myimage | color: {r,g,b}}
   end
 
-  def buil_grid(%Identicon.Image{hex: hex} = myimage) do
+  @doc """
+    the build grid function takes in the Identicon.Image struct
+    and chunks the hex data at every 3rd element
+
+    ## example
+       iex(2)> Identicon.main("dfdffff")
+       [[132, 195, 149], [156, 44, 66], [89, 148, 74], ~c"M\v&", [186, 43, 88], ~c"n"]
+  """
+  def build_grid(%Identicon.Image{hex: hex} = _) do
     hex
     |> Enum.chunk_every(3)
 
