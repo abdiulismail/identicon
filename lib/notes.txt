@@ -1,0 +1,28 @@
+chatgpt explanation of this code 
+
+Sure! Let's break down the code step by step in simple terms:
+
+1. The code defines a module called `Identicon`.
+2. The `Identicon` module has several functions, but the main one is `main(input)`.
+3. The `main` function takes an `input`, which is just some data (like a word or number).
+4. The `main` function performs a series of transformations on the `input` using other functions and returns the final result.
+
+Here's what each function does:
+
+1. `hash_input(input)`: This function takes the `input` and converts it into a unique list of numbers. It uses a special algorithm called MD5 to do this.
+
+2. `pick_color(%Identicon.Image{hex: [r, g, b | _tail]} = myimage)`: This function takes the list of numbers (`hex`) from the previous step and picks the first three numbers to represent a color (red, green, and blue). It puts these three numbers together to create a color for the `Identicon`.
+
+3. `build_grid(%Identicon.Image{hex: hex} = myimage)`: This function takes the list of numbers (`hex`) again and splits it into smaller groups of three. It then mirrors each group and combines them to create a grid-like pattern.
+
+4. `mirror_row(row)`: This function takes a list of two numbers and duplicates the second number before the first number. For example, `[145, 46]` becomes `[145, 46, 46, 145]`.
+
+5. `filter_odd_squares(%Identicon.Image{grid: grid} = image)`: This function takes the grid created in the previous step and keeps only the parts that have even numbers. It removes any odd numbers from the grid.
+
+6. `build_pixel_map(%Identicon.Image{grid: grid} = image)`: This function is not yet implemented, so it doesn't do anything at the moment.
+
+Finally, the `main` function puts all these steps together. It takes the `input`, processes it through each function, and returns the final result.
+
+The goal of this code is to create an Identicon, which is a unique image generated from an input value. 
+Each Identicon is based on the `input`, and the code applies some transformations to make the image look visually interesting and distinctive. 
+However, since the `build_pixel_map` function is not yet implemented, the final image generation is incomplete in this code.
